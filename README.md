@@ -201,6 +201,37 @@ Once it is installed, you only need to set 'scrcpy' option and save config in ht
 #### BlueStacks
 I created a version for Bluestacks, you only need to set 'bluestacks' option and save config in http://127.0.0.1:8000/ (read WEB UI section). But I didn't tested enough here, I recommend you to use Scrcpy is lighter and more "native".
 
+#### Using the ADB controller (BlueStacks/LDPlayer/Android)
+ADB mode lets the bot send taps without hijacking your mouse. To enable it:
+
+1. **Install Android Platform Tools**
+   - Download the ZIP for Windows from Google's official page: <https://developer.android.com/tools/releases/platform-tools>.
+   - Extract it somewhere permanent, e.g., `C:\Android\platform-tools`.
+   - Add that folder to your Windows `PATH` (System Properties → Advanced → Environment Variables).
+   - Open a *new* terminal and run `adb version` to confirm it works globally (no need to `cd` into the folder anymore).
+
+2. **Enable/verify ADB on your emulator/device**
+   - BlueStacks: Settings → Advanced → *ADB Debugging* → Enable remote connection. Use `localhost:5555` by default.
+   - LDPlayer 9: Settings → Otros → *Depuración de ADB* → "Abrir conexión remota". The default endpoint is also `127.0.0.1:5555`.
+   - Physical/other Android devices: enable Developer Options + USB debugging.
+
+3. **Connect the device manually before launching the bot**
+   ```cmd
+   adb start-server
+   adb connect 127.0.0.1:5555   # adjust port if your emulator uses another (e.g., 62001)
+   adb devices                 # should list 127.0.0.1:5555 as "device"
+   ```
+   If it shows `offline` or nothing, fix the emulator settings first.
+
+4. **Configure Umaplay** (Web UI → General tab)
+   - Set **Mode** = `adb` (or `bluestack` with `Use ADB` checked if you still want the BlueStacks window-focus path).
+   - Turn on **Use ADB** and set **ADB Device** to the host/port you connected (e.g., `127.0.0.1:5555`).
+   - Click **Save Config**.
+
+5. **Run the bot**
+   - Launch `python main.py`, press F2, and the controller will reuse the already-connected device.
+   - If the log shows `Could not connect to ADB device`, re-check that `adb devices` lists it and that `adb` is still available in PATH.
+
 ---
 
 ## WEB UI

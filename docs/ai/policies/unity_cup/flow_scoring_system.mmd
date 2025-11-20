@@ -23,10 +23,10 @@ DIR_ZERO --> SUPPORTS
 %% Tazuna cameo (PAL rules)
 SUPPORTS -->|Name support_tazuna| TAZUNA_COLOR{Tazuna bar color}
 TAZUNA_COLOR -->|Blue| TAZ_BLUE[Add 1.50 PAL bonus]
-TAZUNA_COLOR -->|Green| TAZ_GREEN[Add 0.25 PAL bonus]
-TAZUNA_COLOR -->|Orange| TAZ_ORANGE[Add 0.15 PAL bonus]
-TAZUNA_COLOR -->|Yellow or max| TAZ_YELLOW[Add 0.10 PAL bonus]
-TAZUNA_COLOR -->|Other| TAZ_ZERO[Add 0.00 PAL bonus]
+TAZUNA_COLOR -->|Green| TAZ_GREEN[Add 0.50 PAL bonus]
+TAZUNA_COLOR -->|Orange| TAZ_ORANGE[Add 0.50 PAL bonus]
+TAZUNA_COLOR -->|Yellow or max| TAZ_YELLOW[Add 0.50 PAL bonus]
+TAZUNA_COLOR -->|Other| TAZ_ZERO[Add 0.50 PAL bonus]
 TAZ_BLUE --> SUPPORTS
 TAZ_GREEN --> SUPPORTS
 TAZ_ORANGE --> SUPPORTS
@@ -35,7 +35,7 @@ TAZ_ZERO --> SUPPORTS
 
 %% Kashimoto cameo (PAL or Director)
 SUPPORTS -->|Name support_kashimoto| KASH_MODE{Support type visible?}
-KASH_MODE -->|Type in SPD STA PWR GUTS WIT PAL| KASH_PAL[Kashimoto uses PAL bar values 1.50 blue 0.25 green 0.15 orange 0.10 yellow]
+KASH_MODE -->|Type in SPD STA PWR GUTS WIT PAL| KASH_PAL[Kashimoto uses PAL bar values 1.50 blue 0.50 otherwise]
 KASH_MODE -->|No support type| KASH_DIR[Kashimoto uses Director values 0.25 blue 0.15 green 0.10 orange]
 KASH_PAL --> SUPPORTS
 KASH_DIR --> SUPPORTS
@@ -70,16 +70,16 @@ RAINBOW_COMBO_ADD --> SPIRIT_STAGE
 %% Spirit scoring
 SPIRIT_STAGE --> WHITE_BASE{White spirits present?}
 WHITE_BASE -->|Filling flames| WHITE_FILL[Add 0.40 per white spirit filling]
-WHITE_BASE -->|Exploded flames| WHITE_EXPLODED[Add 0.12 per white spirit exploded]
+WHITE_BASE -->|Exploded flames| WHITE_EXPLODED[Add 0.13 per white spirit exploded]
 WHITE_FILL --> WHITE_COMBO
 WHITE_EXPLODED --> WHITE_COMBO
 WHITE_BASE -->|None| BLUE_BASE
-WHITE_COMBO -->|At least two white filling| WHITE_COMBO_ADD[Add 0.10 plus 0.20 per white filling]
+WHITE_COMBO -->|At least two white filling| WHITE_COMBO_ADD[Add 0.20 plus 0.25 per white filling]
 WHITE_COMBO -->|Exploded inside combo| WHITE_COMBO_EXTRA[Add 0.01 per exploded counted]
 WHITE_COMBO_ADD --> BLUE_BASE
 WHITE_COMBO_EXTRA --> BLUE_BASE
 
-BLUE_BASE -->|Blue spirits present| BLUE_ADD[Add 1.50 per blue spirit]
+BLUE_BASE -->|Blue spirits present| BLUE_ADD[Add 0.50 per blue spirit]
 BLUE_BASE -->|None| BLUE_COMBO_STAGE
 BLUE_ADD --> BLUE_COMBO_STAGE
 BLUE_COMBO_STAGE -->|Blue filling count >= 2| BLUE_COMBO_ADD[Add 0.25 per extra blue filling beyond first]
@@ -89,16 +89,18 @@ BLUE_COMBO_ADD --> RISK_STAGE
 %% Risk scaling and final flags
 RISK_STAGE --> RISK_MULT{Computed SV total}
 RISK_MULT -->|SV >= 7| RISK_X2A[Risk limit = base * 2.00]
-RISK_MULT -->|SV >= 5 without important hint| RISK_X2B[Risk limit = base * 2.00]
-RISK_MULT -->|SV > 4.5 without important hint| RISK_X1_5[Risk limit = base * 1.50]
-RISK_MULT -->|SV >= 4.25 without important hint| RISK_X1_35[Risk limit = base * 1.35]
-RISK_MULT -->|SV >= 4.0| RISK_X1_25[Risk limit = base * 1.25]
+RISK_MULT -->|SV > 5.5 without important hint| RISK_X1_65[Risk limit = base * 1.65]
+RISK_MULT -->|SV > 5.0 without important hint| RISK_X1_5[Risk limit = base * 1.50]
+RISK_MULT -->|SV >= 4.5 without important hint| RISK_X1_35[Risk limit = base * 1.35]
+RISK_MULT -->|SV >= 3.5| RISK_X1_25[Risk limit = base * 1.25]
+RISK_MULT -->|SV >= 2.5| RISK_X1_1[Risk limit = base * 1.10]
 RISK_MULT -->|Otherwise| RISK_BASE[Risk limit = base * 1.00]
 RISK_X2A --> GREEDY_GATE
-RISK_X2B --> GREEDY_GATE
+RISK_X1_65 --> GREEDY_GATE
 RISK_X1_5 --> GREEDY_GATE
 RISK_X1_35 --> GREEDY_GATE
 RISK_X1_25 --> GREEDY_GATE
+RISK_X1_1 --> GREEDY_GATE
 RISK_BASE --> GREEDY_GATE
 
 GREEDY_GATE -->|SV >= 3.5 and failure <= risk limit| GREEDY_HIT[Set greedy_hit true]

@@ -8,6 +8,71 @@ This organizes the mixed notes into a clear, actionable backlog. Items are group
 
 ### 0.4.1
 
+Dummiez
+opened 4 days ago
+I can't seem to get the adb mode to identify the devices (using LDPlayer), I've also tried Bluestacks which appears on the adb list as well with the same issue. The adb device naming is also a bit confusing to me, does it want the network port or the device name like emulator-5555? (as it appears when using adb devices)
+
+C:\LDPlayer\LDPlayer9>adb devices -l
+List of devices attached
+emulator-5555          device product:SM-S9210 model:SM_S9210 device:star2qltechn transport_id:1
+
+C:\LDPlayer\LDPlayer9>adb connect localhost:5555
+connected to localhost:5555
+
+C:\LDPlayer\LDPlayer9>adb devices -l
+List of devices attached
+emulator-5555          device product:SM-S9210 model:SM_S9210 device:star2qltechn transport_id:1
+localhost:5555         device product:SM-S9210 model:SM_S9210 device:star2qltechn transport_id:3
+
+
+DominicS48
+opened 3 days ago
+So I'm trying to run the bot for fan runs during which I never want it to use an alarm clock. I disabled the option for "Try again on failed goal", however the tooltip makes me unsure if this is the proper use of this button. Either way, after failing a goal race, the bot will select Try Again, thus uising an alarm clock. However on the following screen which contains the button for View Results and Race, as well as the alarm clock symbol in the top left, the bot will hang and eventually stop.
+
+22:35:23 INFO    race.py:1022: [race] Clicked green 'Race' button (popup) confirmation
+22:35:23 INFO    race.py:1031: Waiting for race lobby to appear
+22:35:32 DEBUG   race.py:641: [race] View Results active probability: 1.000
+22:35:38 DEBUG   race.py:788: [race] Looking for button_green 'Next' button. Shown after race.
+22:35:40 DEBUG   race.py:801: [race] Looking for race_after_next special button. When Pyramid
+22:35:44 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223544_735_ui_mood_0.69.png
+22:35:45 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223545_894_ui_mood_0.68.png
+22:35:47 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223547_046_ui_mood_0.68.png
+22:35:49 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223549_317_ui_mood_0.69.png
+22:35:49 DEBUG   waiter.py:205: [waiter] timeout after 8.00s (tag=race_after)
+22:35:49 INFO    race.py:824: [race] RaceDay flow finished.
+22:35:52 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223552_144_ui_mood_0.70.png
+22:35:55 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223555_503_ui_mood_0.69.png
+22:36:09 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223609_335_ui_mood_0.69.png
+22:36:12 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223612_172_ui_mood_0.61.png
+22:36:19 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223619_394_ui_mood_0.71.png
+22:36:23 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223623_826_ui_mood_0.69.png
+22:36:26 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223626_162_button_change_0.71.png
+22:36:28 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223627_982_ui_mood_0.71.png
+22:36:29 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223629_143_ui_mood_0.68.png
+22:36:36 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223636_072_ui_mood_0.68.png
+22:36:43 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223643_485_ui_mood_0.67.png
+22:36:47 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223646_929_ui_mood_0.60.png
+22:36:48 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223648_115_ui_mood_0.69.png
+22:36:50 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223650_480_ui_mood_0.69.png
+22:36:54 DEBUG   yolo_local.py:108: saved low-conf training debug -> C:\Users\Domin\Umaplay\debug\ura\general\raw\general_20251115-223653_938_ui_mood_0.71.png
+22:36:57 WARNING agent.py:176: Stopping the algorithm just for safeness, nothing happened in 20 iterations
+22:36:57 INFO    main.py:354: [BOT] Stopped.
+
+boshido
+opened 3 days ago · edited by boshido
+Version: 0.4.0
+after merge request #73 applied
+
+My Environment Setup
+
+ADB by using usb
+SCRCPY - Google Pixel 2 XL
+scrcpy --max-fps 10 -b 2M --video-codec=h264 --no-audio
+Sepearate YOLO/OCR api run in Linux (Python 3.10, CUDA 13.0 update 2)
+uvicorn server.main_inference:app --reload --host 0.0.0.0 --port 8001
+Windows 11 VM (Python 3.12)
+
+
 
 Weir error check thread, air grove: @
 
@@ -51,10 +116,65 @@ Author notes: I think this is a bug. This is a problem that should not be happen
 """
 
 
+new cards
+
+
 #### README.md:
 - suggest just open terminal as admin in the worst case
 - slice the readme to make easier to read
 - Update images
+
+
+Done: Adjusted risk for URA, was overcalculating dynamic risk
+
+
+Luisao
+
+ — 14/11/2025 0:06
+to anyone wondering, the 0.4.0 version is working on MuMuPlayer through the localhost:5557 instead of the default localhost:5555, awesome new feature 😄
+
+NhuNTD
+
+ — 14/11/2025 2:22
+do you know how to connect to ldplayer
+Luisao
+
+ — 14/11/2025 2:36
+u need to discover the default port for this emulator, and edit in your bot
+
+adb
+vestovia — 14/11/2025 6:22
+change to 127.0.0.1:16384
+
+Saddah
+
+ — 14/11/2025 12:51
+where do i get adb install from
+actually found it in a scrpy install i did previously
+just moved it and it works now
+
+
+Saddah
+
+ — 16/11/2025 15:03
+does ADB mode need a certain resolution on the emulator to work correctly?
+
+
+Only
+
+ — 14:07
+hmm I do get a lot of [skills] skipping 'Medium Straightaways ◎' grade='◎' (already purchased) when it is still ○ [1/2] 
+
+
+Unknown
+
+ — 1:51
+Okay, new suggestion: If the run is at the URA Finale, it should not rest at least at the final turn before the finals
+
+
+
+Open Command Prompt and navigate to the Umaplay folder -> installation not clear enough
+
 ### 0.4.2
 
 Events:
@@ -93,13 +213,65 @@ thread of 'Unknown'
 support_type is confusing pwr and PAL, better use a classiffier or another logic
 
 
+make it clear:
+Thorin
+
+ — 11/11/2025 6:41
+Nevermind, I believe I found the solution (Won't delete so people find the solution when searching Discord)
+
+We have to use a Virtual Machine to be able to use our mouse:
+https://github.com/Magody/Umaplay/blob/main/docs/README.virtual_machine.md
+
+
+antonioxxx2
+
+ — 11/11/2025 17:11
+estoy viendo que en algunas carreras el mouse queda entremedio de concierto y next
+
+Rosetta — 13/11/2025 13:14
+I don't have a log but sometimes when I schedule the Japanese Derby and the recommended race is a random OP one, it'll go for the Japanese Oaks instead - maybe because it's on the first screen and the Derby isn't, but the Satsuki Sho doesn't have this problem
+
+
+Unknown
+
+ — 15/11/2025 10:14
+Weird bug, but the bot buys late surger straightaways when I put pace chaser and pace chaser straightaways on late surger runs
+put positive / negative tokens
+
+Rosetta — 15/11/2025 10:16
+To fix that go to core\actions\skills.py, edit it in notepad and find the confidence that says 0.75 # experimental and change the 0.75 to 0.9
+The only issue I've had since then is firm/wet conditions
+But I added that to the skill override json
+
+FreedomArk — 11:00
+this is a minor gripe suggestion but is it possible to have a switch where it just stops upon detecting its the crane game? sometimes i leave it in the background on another screen while watching shows and can at least manual the crane game in the off chance it pops up.
+
+
+
+important bug thread link: https://discord.com/channels/1100600632659943487/1438783548390641789
+
+
 ### 0.4.3
 optimize CNN predicts with ONNX runtime for CPU automatically
+
+Fat Raccoon
+
+ — 14/11/2025 0:30
+Is there any way to increase the speed of the bot or is it meant to stay at that speed to prevent issues?
+
+.315 — 14/11/2025 0:09
+The bot always use a clock when failing a race even when i set it to stop on failed race
+It uses the clock then stop
+I think it mistake the "try again" button for the "next" button
+Is there a fix for it ?
+
 
 
 ## 0.5
 
 ### 0.5.0
+
+Add R cards
 
 Bat and executable:
 - bat is failing
