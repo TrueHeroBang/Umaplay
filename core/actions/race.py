@@ -31,7 +31,7 @@ from core.utils.logger import logger_uma
 from core.utils.text import _normalize_ocr, fuzzy_ratio
 from core.utils.yolo_objects import collect, find, bottom_most, inside
 from core.utils.pointer import smart_scroll_small
-from core.utils.abort import abort_requested
+from core.utils.abort import abort_requested, request_abort
 
 
 class ConsecutiveRaceRefused(Exception):
@@ -867,6 +867,11 @@ class RaceFlow:
                 "[race] Retry disabled via settings despite loss indicator | counters=%s",
                 self._race_result_counters,
             )
+            logger_uma.warning(
+                "[race] Stopping bot so user can choose Try Again or Cancel manually."
+            )
+            request_abort()
+            return False
 
         if clicked_try_again:
             logger_uma.debug("[race] Lost the race, trying again.")
