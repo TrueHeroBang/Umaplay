@@ -23,6 +23,7 @@ def smart_scroll_small(
     settle_mid_s: float = 0.10,
     settle_post_s: float = 0.15,
     anchor_xy: Optional[Tuple[int, int]] = None,
+    end_hold_range_android: Optional[Tuple[float, float]] = None,
 ) -> None:
     """
     Small, device-aware scroll:
@@ -76,7 +77,7 @@ def smart_scroll_small(
             -drag_px,
             steps=max(1, steps_android),
             duration_range=(0.20, 0.40),
-            end_hold_range=(0.10, 0.20),
+            end_hold_range=end_hold_range_android or (0.10, 0.20),
         )
     elif isinstance(ctrl, ADBController):
         if not xywh and target_anchor is None:
@@ -88,8 +89,9 @@ def smart_scroll_small(
                 -max(20, int(200 * fraction_android)),
                 steps=max(1, steps_android),
                 duration_range=(0.20, 0.40),
-                end_hold_range=(0.10, 0.20),
+                end_hold_range=end_hold_range_android or (0.10, 0.20),
             )
+            time.sleep(settle_post_s)
         else:
             if target_anchor is None and xywh:
                 x, y, w, h = xywh
@@ -122,8 +124,9 @@ def smart_scroll_small(
             ctrl.scroll(
                 xyxy,
                 steps=1,
-                duration_range=(0.30, 0.40),
-                end_hold_range=(0.20, 0.40),
+                duration_range=(0.20, 0.40),
+                end_hold_range=end_hold_range_android or (0.20, 0.40),
+                max_pixels_ratio=0.35
             )
     else:
         logger_uma.debug(

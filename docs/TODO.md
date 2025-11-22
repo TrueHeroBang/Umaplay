@@ -9,14 +9,9 @@ This organizes the mixed notes into a clear, actionable backlog. Items are group
 ### 0.4.1
 
 Bug:
-- Weird error check thread, air grove, and infirmary, Rocostre thread: https://discord.com/channels/1100600632659943487/1438783548390641789
-- @Rosetta:After the bot checks for skills after a hint, it doesn't seem to be able to detect any info on the screen and will always rest regardless of energy value
-- On new races, is confusing the camera button with the skip button. include the new images at datasets\uma_unity_cup\raw\set_2025-11-19 already labeled, to the ura model (normal no unity) with the inspiration class. Retrained
 - @Rosetta: it is confusing hanshin juvenively for Asahi hai, if asahi hai is first. Japanese oaks and yushun... Maybe do a full read and go back
 - it is not respecting the blue explosions restrictions.?
-
-Bot strategy (Unity cup):
-- Deactivate guts on unity cup training blue by default
+- Weird error check thread, air grove, and infirmary, Rocostre thread: https://discord.com/channels/1100600632659943487/1438783548390641789
 
 ADB:
 - Bluestack bugfixes and validation @Pure Fox and others
@@ -39,6 +34,7 @@ Discord:
 
 ### 0.4.2
 
+- On new races, is confusing the camera button with the skip button. include the new images at datasets\uma_unity_cup\raw\set_2025-11-19 already labeled, to the ura model (normal no unity) with the inspiration class. Retrained
 
 Events:
 - adding a new uma trainee, doesn't require only scraping data, we may need to look into internal umamusume assets for the classifier algorithm... document this kind of processes and make the auto validator algorithms. And add the new icons
@@ -229,7 +225,7 @@ tho in the log it said something about setting style
 ## 0.5
 
 ### 0.5.0
-
+if not skill bought, or if multiple 'disabled' plus icons, that may mean, we don't have more skill points so we can early finish the buy sequence
 solve fast mode bugs
 
 Speed up processing:
@@ -415,9 +411,7 @@ Bot Strategy:
 End2End navigator play:
 - Github Issue
 
-
-
-
+- I can't replicate this "@Rosetta:After the bot checks for skills after a hint, it doesn't seem to be able to detect any info on the screen and will always rest regardless of energy value"
 
 ## To validate
 
@@ -430,7 +424,6 @@ General Bugfixes:
 - Bot was 'trying again' even if option was disabled: now properly ignores "Try again". Thanks for reporting: https://github.com/Magody/Umaplay/issues/75 @DominicS48
 - Unity Cup bug, was not recognizing gold buttons / race day buttons: Added "Pixel 2 XL" Unity Cup images to YOLO model training dataset: https://github.com/Magody/Umaplay/issues/76 @Boshido (@Dorasu?)
 - If was didn't buy a skill, it was not returning to the train screen: Added better control for this https://github.com/Magody/Umaplay/issues/77 @lfmnovaes (Luisao)
-
 - try again keeps failing (when enabled and when disabled)
 
 Skill buying:

@@ -436,6 +436,8 @@ class SkillsFlow:
                 if ok:
                     matches.append((target, score, reason))
 
+            diagnostics.sort(key=lambda x: x[2], reverse=True)
+
             contains_any = bool(matches)
             # Weighted best match: prioritize certain key terms
             KEY_UPWEIGHT = ("groundwork", "left-handed", "corner connoisseur")
@@ -463,7 +465,7 @@ class SkillsFlow:
                             "score": round(s, 3),
                             "reason": r,
                         }
-                        for t, ok, s, r in diagnostics[:4]
+                        for t, ok, s, r in diagnostics[:3]
                     ],
                 )
 
@@ -700,7 +702,7 @@ class SkillsFlow:
                 -int(h * 0.25),
                 steps=2,
                 duration_range=(0.22, 0.40),
-                end_hold_range=(0.15, 0.30),
+                end_hold_range=(0.2, 0.40),
             )
             # Inertia wait
             time.sleep(0.15)
@@ -717,9 +719,12 @@ class SkillsFlow:
                 fraction_android=0.18,
                 settle_pre_s=0.02,
                 settle_mid_s=0.05,
-                settle_post_s=0.15,
+                settle_post_s=0.25,
                 anchor_xy=anchor_xy,
+                end_hold_range_android=(0.40, 0.6),
             )
+            # Inertia wait
+            time.sleep(0.15)
         elif isinstance(self.ctrl, BlueStacksController):
             xywh = self.ctrl._client_bbox_screen_xywh()
             if not xywh:
