@@ -38,7 +38,7 @@ class ADBController(IController):
     # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
-    def _adb_command(self, *args: str, text: bool = True) -> subprocess.CompletedProcess:
+    def _adb_command(self, *args: str, text: bool = True, timeout: float = 10.0) -> subprocess.CompletedProcess:
         cmd = ["adb"]
         if self.device:
             cmd.extend(["-s", self.device])
@@ -49,7 +49,7 @@ class ADBController(IController):
                 cmd,
                 capture_output=True,
                 text=text,
-                timeout=10,
+                timeout=timeout,
                 check=False,
             )
         except FileNotFoundError as exc:  # pragma: no cover - adb missing
@@ -169,6 +169,7 @@ class ADBController(IController):
         duration_range: Tuple[float, float] = (0.16, 0.26),
         pause_range: Tuple[float, float] = (0.03, 0.07),
         end_hold_range: Tuple[float, float] = (0.05, 0.12),
+        max_pixels_ratio: Optional[float] = 0.35,
     ) -> bool:
         if not (self._screen_width and self._screen_height):
             return False
@@ -191,6 +192,10 @@ class ADBController(IController):
 
         def _clamp_y(y: int) -> int:
             return max(10, min(height - 10, y))
+
+        if max_pixels_ratio is not None and max_pixels_ratio > 0:
+            max_pixels_allowed = max(min_px, int(height * max_pixels_ratio))
+            pixels = min(pixels, max_pixels_allowed)
 
         for _ in range(max(1, int(steps))):
             half = pixels // 2
@@ -217,8 +222,24 @@ class ADBController(IController):
                 str(max(0, min(height - 1, int(y1j)))),
                 str(max(1, duration_ms)),
             )
+            time.sleep(random.uniform(*end_hold_range) * 2)
 
-            time.sleep(random.uniform(*end_hold_range))
+            # Hold at end position to reduce inertia
+            hold_ms = int(random.uniform(*end_hold_range) * 1000)
+            if hold_ms > 0:
+                hold_timeout = (hold_ms / 1000.0) + 5.0  # Add 5s buffer
+                self._adb_command(
+                    "shell",
+                    "input",
+                    "swipe",
+                    str(max(0, min(width - 1, int(xj)))),
+                    str(max(0, min(height - 1, int(y1j)))),
+                    str(max(0, min(width - 1, int(xj)))),
+                    str(max(0, min(height - 1, int(y1j)))),
+                    str(max(1, hold_ms)),
+                    timeout=hold_timeout,
+                )
+
             time.sleep(random.uniform(*pause_range))
 
         return True

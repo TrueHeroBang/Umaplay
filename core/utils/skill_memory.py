@@ -196,6 +196,7 @@ class SkillMemoryManager:
         date_key: Optional[str] = None,
         turn: Optional[int] = None,
         commit: bool = True,
+        boughts: int = 1
     ) -> None:
         self._record(
             bucket="skills_bought",
@@ -205,6 +206,7 @@ class SkillMemoryManager:
             turn=turn,
             increment=True,
             commit=commit,
+            boughts=boughts
         )
 
     def has_seen(self, skill_name: str, *, grade: Optional[str] = None) -> bool:
@@ -212,6 +214,28 @@ class SkillMemoryManager:
 
     def has_bought(self, skill_name: str, *, grade: Optional[str] = None) -> bool:
         return self._has("skills_bought", skill_name, grade=grade)
+
+    def get_bought_count(self, skill_name: str, *, grade: Optional[str] = None) -> int:
+        name = (skill_name or "").strip()
+        if not name:
+            return 0
+        collection = self._data.get("skills_bought")
+        if not isinstance(collection, dict):
+            return 0
+        grade_map = collection.get(name)
+        if not isinstance(grade_map, dict):
+            return 0
+        grade_key = self._grade_key(grade)
+        entry = grade_map.get(grade_key)
+        if entry and isinstance(entry, dict):
+            count_val = self._safe_int(entry.get("count"), default=0)
+            return count_val or 0
+        # Fallback to ANY bucket when specific grade missing
+        fallback = grade_map.get(self.ANY_GRADE)
+        if fallback and isinstance(fallback, dict):
+            count_val = self._safe_int(fallback.get("count"), default=0)
+            return count_val or 0
+        return 0
 
     def export(self) -> Dict[str, object]:
         """Return a deep copy of the current memory payload."""
@@ -230,6 +254,7 @@ class SkillMemoryManager:
         turn: Optional[int],
         increment: bool,
         commit: bool,
+        boughts:int=1
     ) -> None:
         name = (skill_name or "").strip()
         if not name:
@@ -247,7 +272,7 @@ class SkillMemoryManager:
                 "first_turn": self._safe_int(turn),
                 "last_date": date_key,
                 "last_turn": self._safe_int(turn),
-                "count": 1 if increment else 0,
+                "count": boughts if increment else 0,
                 "updated_at": now,
             }
             grade_map[grade_key] = entry

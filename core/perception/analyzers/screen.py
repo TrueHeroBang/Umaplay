@@ -6,6 +6,27 @@ from core.settings import Settings
 from core.types import DetectionDict, ScreenInfo, ScreenName
 
 
+def _count_conf(
+    dets: List[DetectionDict], target_name: str, threshold: float
+) -> int:
+    return sum(
+        1
+        for d in dets
+        if d["name"] == target_name and float(d.get("conf", 0.0)) >= threshold
+    )
+
+
+def _any_conf(dets: List[DetectionDict], target_name: str, threshold: float) -> bool:
+    return any(
+        d["name"] == target_name and float(d.get("conf", 0.0)) >= threshold
+        for d in dets
+    )
+
+
+def _collect(dets: List[DetectionDict], target_name: str) -> List[DetectionDict]:
+    return [d for d in dets if d["name"] == target_name]
+
+
 def classify_screen_ura(
     dets: List[DetectionDict],
     *,
@@ -44,57 +65,29 @@ def classify_screen_ura(
         "button_claw_action": "button_claw_action",
         "claw": "claw",
         "pal": "lobby_pal",
+        "button_change": "button_change",
+        "race_badge": "race_badge",
     }
 
     counts = Counter(d["name"] for d in dets)
 
-    n_event_choices = sum(
-        1 for d in dets if d["name"] == names_map["event"] and d["conf"] >= event_conf
-    )
-    n_train = sum(
-        1
-        for d in dets
-        if d["name"] == names_map["training_button"] and d["conf"] >= training_conf
-    )
+    n_event_choices = _count_conf(dets, names_map["event"], event_conf)
+    n_train = _count_conf(dets, names_map["training_button"], training_conf)
 
-    has_tazuna = any(
-        d["name"] == names_map["tazuna"] and d["conf"] >= lobby_conf for d in dets
-    )
-    has_infirmary = any(
-        d["name"] == names_map["infirmary"] and d["conf"] >= lobby_conf for d in dets
-    )
-    has_rest = any(
-        d["name"] == names_map["rest"] and d["conf"] >= lobby_conf for d in dets
-    )
-    has_rest_summer = any(
-        d["name"] == names_map["rest_summer"] and d["conf"] >= lobby_conf for d in dets
-    )
-    has_recreation = any(
-        d["name"] == names_map["recreation"] and d["conf"] >= lobby_conf for d in dets
-    )
-    has_race_day = any(
-        d["name"] == names_map["race_day"] and d["conf"] >= race_conf for d in dets
-    )
-    has_inspiration = any(
-        d["name"] == names_map["event_inspiration"] and d["conf"] >= race_conf
-        for d in dets
-    )
-    has_lobby_skills = any(
-        d["name"] == names_map["lobby_skills"] and d["conf"] >= lobby_conf for d in dets
-    )
-    race_after_next = any(
-        d["name"] == names_map["race_after_next"] and d["conf"] >= 0.5 for d in dets
-    )
-    has_button_claw_action = any(
-        d["name"] == names_map["button_claw_action"] and d["conf"] >= lobby_conf
-        for d in dets
-    )
-    has_claw = any(
-        d["name"] == names_map["claw"] and d["conf"] >= lobby_conf for d in dets
-    )
-    has_pal = any(
-        d["name"] == names_map["pal"] and d["conf"] >= lobby_conf for d in dets
-    )
+    has_tazuna = _any_conf(dets, names_map["tazuna"], lobby_conf)
+    has_infirmary = _any_conf(dets, names_map["infirmary"], lobby_conf)
+    has_rest = _any_conf(dets, names_map["rest"], lobby_conf)
+    has_rest_summer = _any_conf(dets, names_map["rest_summer"], lobby_conf)
+    has_recreation = _any_conf(dets, names_map["recreation"], lobby_conf)
+    has_race_day = _any_conf(dets, names_map["race_day"], race_conf)
+    has_inspiration = _any_conf(dets, names_map["event_inspiration"], race_conf)
+    has_lobby_skills = _any_conf(dets, names_map["lobby_skills"], lobby_conf)
+    race_after_next = _any_conf(dets, names_map["race_after_next"], 0.5)
+    has_button_claw_action = _any_conf(dets, names_map["button_claw_action"], lobby_conf)
+    has_claw = _any_conf(dets, names_map["claw"], lobby_conf)
+    has_pal = _any_conf(dets, names_map["pal"], lobby_conf)
+    has_button_change = _any_conf(dets, names_map["button_change"], lobby_conf)
+    has_race_badge = _any_conf(dets, names_map["race_badge"], lobby_conf)
 
     # 1) Event
     if n_event_choices >= 2:
@@ -143,6 +136,13 @@ def classify_screen_ura(
         }
     if n_event_choices == 1:
         return "EventStale", {"event_choices": n_event_choices}
+
+    
+    if has_button_change and has_race_badge:
+        return "RaceLobby", {
+            "button_change": has_button_change,
+            "race_badge": has_race_badge,
+        }
     # 5) Fallback
     return "Unknown", {
         "training_buttons": n_train,
@@ -154,6 +154,8 @@ def classify_screen_ura(
         "race_day": has_race_day,
         "counts": dict(counts),
         "pal_available": has_pal,
+        "button_change": has_button_change,
+        "race_badge": has_race_badge,
     }
 
 def classify_screen_unity_cup(
@@ -199,40 +201,30 @@ def classify_screen_unity_cup(
         "button_green": "button_green",
         "button_pink": "button_pink",
         "pal": "lobby_pal",
+        "button_change": "button_change",
+        "race_badge": "race_badge",
     }
 
     counts = Counter(d["name"] for d in dets)
 
-    n_event_choices = sum(
-        1 for d in dets if d["name"] == names_map["event"] and d["conf"] >= event_conf
-    )
-    n_train = sum(
-        1
-        for d in dets
-        if d["name"] == names_map["training_button"] and d["conf"] >= training_conf
-    )
+    n_event_choices = _count_conf(dets, names_map["event"], event_conf)
+    n_train = _count_conf(dets, names_map["training_button"], training_conf)
 
-    def _any_conf(name: str, threshold: float) -> bool:
-        return any(
-            d["name"] == name and float(d.get("conf", 0.0)) >= threshold for d in dets
-        )
+    has_tazuna = _any_conf(dets, names_map["tazuna"], lobby_conf)
+    has_infirmary = _any_conf(dets, names_map["infirmary"], lobby_conf)
+    has_rest = _any_conf(dets, names_map["rest"], lobby_conf)
+    has_rest_summer = _any_conf(dets, names_map["rest_summer"], lobby_conf)
+    has_recreation = _any_conf(dets, names_map["recreation"], lobby_conf)
 
-    def _collect(name: str) -> List[DetectionDict]:
-        return [d for d in dets if d["name"] == name]
-
-    has_tazuna = _any_conf(names_map["tazuna"], lobby_conf)
-    has_infirmary = _any_conf(names_map["infirmary"], lobby_conf)
-    has_rest = _any_conf(names_map["rest"], lobby_conf)
-    has_rest_summer = _any_conf(names_map["rest_summer"], lobby_conf)
-    has_recreation = _any_conf(names_map["recreation"], lobby_conf)
-
-    button_white_present = _any_conf(names_map["button_white"], lobby_conf)
-    button_green_present = _any_conf(names_map["button_green"], lobby_conf)
-    has_button_pink = _any_conf(names_map["button_pink"], lobby_conf)
-    has_pal = _any_conf(names_map["pal"], lobby_conf)
+    button_white_present = _any_conf(dets, names_map["button_white"], lobby_conf)
+    button_green_present = _any_conf(dets, names_map["button_green"], lobby_conf)
+    has_button_pink = _any_conf(dets, names_map["button_pink"], lobby_conf)
+    has_pal = _any_conf(dets, names_map["pal"], lobby_conf)
 
     has_button_white = button_white_present
     has_button_green = button_green_present
+    has_button_change = _any_conf(dets, names_map["button_change"], lobby_conf)
+    has_race_badge = _any_conf(dets, names_map["race_badge"], lobby_conf)
 
     race_day_primary_conf = Settings.UNITY_CUP_RACE_DAY_CONF or race_conf
     race_day_relaxed_conf = Settings.UNITY_CUP_RACE_DAY_RELAXED_CONF
@@ -261,7 +253,7 @@ def classify_screen_unity_cup(
             return False
         return not require_support or (button_white_present or button_green_present)
 
-    race_day_candidates = _collect(names_map["race_day"])
+    race_day_candidates = _collect(dets, names_map["race_day"])
     has_race_day = _apply_relaxed(
         race_day_candidates,
         race_day_primary_conf,
@@ -269,7 +261,7 @@ def classify_screen_unity_cup(
         require_support=True,
     )
 
-    golden_candidates = _collect(names_map["event_golden"])
+    golden_candidates = _collect(dets, names_map["event_golden"])
     has_golden = _apply_relaxed(
         golden_candidates,
         golden_primary_conf,
@@ -277,10 +269,10 @@ def classify_screen_unity_cup(
         require_support=False,
     )
 
-    has_lobby_skills = _any_conf(names_map["lobby_skills"], lobby_conf)
-    race_after_next = _any_conf(names_map["race_after_next"], 0.5)
-    has_button_claw_action = _any_conf(names_map["button_claw_action"], lobby_conf)
-    has_claw = _any_conf(names_map["claw"], lobby_conf)
+    has_lobby_skills = _any_conf(dets, names_map["lobby_skills"], lobby_conf)
+    race_after_next = _any_conf(dets, names_map["race_after_next"], 0.5)
+    has_button_claw_action = _any_conf(dets, names_map["button_claw_action"], lobby_conf)
+    has_claw = _any_conf(dets, names_map["claw"], lobby_conf)
     
     
     # 1) Event
@@ -335,6 +327,12 @@ def classify_screen_unity_cup(
         }
     if n_event_choices == 1:
         return "EventStale", {"event_choices": n_event_choices}
+    
+    if has_button_change and has_race_badge:
+        return "RaceLobby", {
+            "button_change": has_button_change,
+            "race_badge": has_race_badge,
+        }
     # 5) Fallback
     return "Unknown", {
         "training_buttons": n_train,
@@ -346,4 +344,6 @@ def classify_screen_unity_cup(
         "race_day": has_race_day,
         "counts": dict(counts),
         "pal_available": has_pal,
+        "button_change": has_button_change,
+        "race_badge": has_race_badge,
     }

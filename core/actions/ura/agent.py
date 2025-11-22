@@ -289,6 +289,14 @@ class AgentURA(AgentScenario):
                     self.ctrl.click_xyxy_center(inspiration["xyxy"], clicks=1)
                 continue
 
+            if screen == "RaceLobby":
+                self.patience = 0
+                self.claw_turn = 0
+                logger_uma.info("[agent] RaceLobby detected; resuming race flow.")
+                if not self.race.lobby():
+                    logger_uma.warning("[agent] RaceLobby resume failed; retrying loop.")
+                continue
+
             if screen == "Raceday":
                 
                 self.patience = 0

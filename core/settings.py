@@ -110,7 +110,7 @@ class Settings:
     )
 
     UNITY_CUP_ADVANCED_DEFAULT: Dict[str, Any] = {
-        "burst_allowed_stats": ["SPD", "STA", "PWR", "GUTS", "WIT"],
+        "burst_allowed_stats": ["SPD", "STA", "PWR", "WIT"],
         "scores": {
             "rainbowCombo": 0.5,
             "whiteSpiritFill": 0.4,
@@ -333,9 +333,15 @@ class Settings:
             if not isinstance(raw_adv, dict):
                 raw_adv = {}
 
+            allowed_stats = {"SPD", "STA", "PWR", "GUTS", "WIT"}
+
             burst_stats = raw_adv.get("burstAllowedStats") or adv_defaults["burst_allowed_stats"]
             if isinstance(burst_stats, list):
-                burst_stats = [str(s).upper() for s in burst_stats if str(s).upper() in adv_defaults["burst_allowed_stats"]]
+                burst_stats = [
+                    str(s).upper()
+                    for s in burst_stats
+                    if str(s).upper() in allowed_stats
+                ]
             else:
                 burst_stats = list(adv_defaults["burst_allowed_stats"])
 

@@ -135,5 +135,173 @@
     "targets": ["Winter Runner"],
     "require_tokens": ["winter"],
     "forbid_tokens": ["spring", "summer", "fall"]
+  },
+  {
+    "canonical": "Front Runner Straightaways",
+    "targets": [
+      "Front Runner Straightaways ◎",
+      "Front Runner Straightaways ○"
+    ],
+    "require_tokens": ["front", "straightaways"],
+    "forbid_tokens": ["pace", "chaser", "chasers", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Pace Chaser Straightaways",
+    "targets": [
+      "Pace Chaser Straightaways ◎",
+      "Pace Chaser Straightaways ○"
+    ],
+    "require_tokens": ["pace", "straightaways"],
+    "forbid_tokens": ["front", "runners", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Late Surger Straightaways",
+    "targets": [
+      "Late Surger Straightaways ◎",
+      "Late Surger Straightaways ○"
+    ],
+    "require_tokens": ["late", "straightaways"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "end", "closers"]
+  },
+  {
+    "canonical": "End Closer Straightaways",
+    "targets": [
+      "End Closer Straightaways ◎",
+      "End Closer Straightaways ○"
+    ],
+    "require_tokens": ["end", "straightaways"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "late", "surgers"]
+  },
+  {
+    "canonical": "Front Runner Corners",
+    "targets": [
+      "Front Runner Corners ◎",
+      "Front Runner Corners ○"
+    ],
+    "require_tokens": ["front", "corners"],
+    "forbid_tokens": ["pace", "chaser", "chasers", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Pace Chaser Corners",
+    "targets": [
+      "Pace Chaser Corners ◎",
+      "Pace Chaser Corners ○"
+    ],
+    "require_tokens": ["pace", "corners"],
+    "forbid_tokens": ["front", "runners", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Late Surger Corners",
+    "targets": [
+      "Late Surger Corners ◎",
+      "Late Surger Corners ○"
+    ],
+    "require_tokens": ["late", "corners"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "end", "closers"]
+  },
+  {
+    "canonical": "End Closer Corners",
+    "targets": [
+      "End Closer Corners ◎",
+      "End Closer Corners ○"
+    ],
+    "require_tokens": ["end", "corners"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "late", "surgers"]
+  },
+  {
+    "canonical": "Frenzied Front Runners",
+    "targets": ["Frenzied Front Runners"],
+    "require_tokens": ["frenzied", "front"],
+    "forbid_tokens": ["pace", "chaser", "chasers", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Frenzied Pace Chasers",
+    "targets": ["Frenzied Pace Chasers"],
+    "require_tokens": ["frenzied", "pace"],
+    "forbid_tokens": ["front", "runners", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Frenzied Late Surgers",
+    "targets": ["Frenzied Late Surgers"],
+    "require_tokens": ["frenzied", "late"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "end", "closers"]
+  },
+  {
+    "canonical": "Frenzied End Closers",
+    "targets": ["Frenzied End Closers"],
+    "require_tokens": ["frenzied", "end"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "late", "surgers"]
+  },
+  {
+    "canonical": "Subdued Front Runners",
+    "targets": ["Subdued Front Runners"],
+    "require_tokens": ["subdued", "front"],
+    "forbid_tokens": ["pace", "chaser", "chasers", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Subdued Pace Chasers",
+    "targets": ["Subdued Pace Chasers"],
+    "require_tokens": ["subdued", "pace"],
+    "forbid_tokens": ["front", "runners", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Subdued Late Surgers",
+    "targets": ["Subdued Late Surgers"],
+    "require_tokens": ["subdued", "late"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "end", "closers"]
+  },
+  {
+    "canonical": "Subdued End Closers",
+    "targets": ["Subdued End Closers"],
+    "require_tokens": ["subdued", "end"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "late", "surgers"]
+  },
+  {
+    "canonical": "Flustered Front Runners",
+    "targets": ["Flustered Front Runners"],
+    "require_tokens": ["flustered", "front"],
+    "forbid_tokens": ["pace", "chaser", "chasers", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Flustered Pace Chasers",
+    "targets": ["Flustered Pace Chasers"],
+    "require_tokens": ["flustered", "pace"],
+    "forbid_tokens": ["front", "runners", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Flustered Late Surgers",
+    "targets": ["Flustered Late Surgers"],
+    "require_tokens": ["flustered", "late"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "end", "closers"]
+  },
+  {
+    "canonical": "Flustered End Closers",
+    "targets": ["Flustered End Closers"],
+    "require_tokens": ["flustered", "end"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "late", "surgers"]
+  },
+  {
+    "canonical": "Hesitant Front Runners",
+    "targets": ["Hesitant Front Runners"],
+    "require_tokens": ["hesitant", "front"],
+    "forbid_tokens": ["pace", "chaser", "chasers", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Hesitant Pace Chasers",
+    "targets": ["Hesitant Pace Chasers"],
+    "require_tokens": ["hesitant", "pace"],
+    "forbid_tokens": ["front", "runners", "late", "surgers", "end", "closers"]
+  },
+  {
+    "canonical": "Hesitant Late Surgers",
+    "targets": ["Hesitant Late Surgers"],
+    "require_tokens": ["hesitant", "late"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "end", "closers"]
+  },
+  {
+    "canonical": "Hesitant End Closers",
+    "targets": ["Hesitant End Closers"],
+    "require_tokens": ["hesitant", "end"],
+    "forbid_tokens": ["front", "chaser", "runners", "pace", "chasers", "late", "surgers"]
   }
 ]

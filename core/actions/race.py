@@ -869,7 +869,7 @@ class RaceFlow:
                 )
 
         # Check if we loss
-
+        time.sleep(1)
         clicked_try_again = False
         loss_indicator_seen = self.waiter.seen(
             classes=("button_green",),

@@ -111,7 +111,8 @@ This design allows the core loop to evolve independently of perception implement
 ## Perception & Automation Stack
 - **Perception**: `core/perception/yolo/` wraps local (`yolo_local.py`) and remote (`yolo_remote.py`) detectors; `core/perception/ocr/` exposes PaddleOCR engines (`ocr_local.py`, `ocr_remote.py`).
 - **Classifiers**: `core/perception/classifiers/` hosts lightweight HTTP clients (e.g., `spirit_remote.py`) that mirror local inference APIs when offloading to the remote server.
-- **Analyzers**: `core/perception/analyzers/` classifies screens, detects UI states, and supports navigation heuristics. Screen classifiers also surface PAL presence by mapping YOLO class `lobby_pal` into `ScreenInfo.pal_available`.
+- **Analyzers**: `core/perception/analyzers/` classifies screens, detects UI states, and supports navigation heuristics. Screen classifiers also surface PAL presence by mapping YOLO class `lobby_pal` into `ScreenInfo.pal_available`, and they now expose a dedicated `RaceLobby` state by requiring both `button_change` and `race_badge` detections so flows can resume pre-race confirmations safely. Detection helpers (`_any_conf`, `_count_conf`) are shared across URA and Unity Cup classifiers to keep threshold handling consistent.
+- **Skill matching**: `core/utils/skill_matching.py` normalizes OCR text and enforces rule-based token checks before fuzzy scores, loading manual overrides from `datasets/in_game/skill_matching_overrides.json` so ambiguous skills (e.g., style-specific straightaways/corners or Frenzied/Subdued debuffs) demand the correct positive tokens and explicitly forbid other styles.
 - **Hint detection**: `core/perception/analyzers/hint.py` fuses HSV ROI checks with anchor-aware hint assignment so YOLO detections favor the card's top-right quadrant and penalize support_bar overlaps, preventing jump misassociation.
 - **Template matching**: `core/perception/analyzers/matching/` prepares histogram/hash caches, performs gray-world balancing, and extracts HSV hair-region fingerprints before combining them with multi-scale TM + perceptual hash scores. OpenCV usage is feature-gated so thin clients can route calls to the remote `/template-match` endpoint (`server/main_inference.py`) when local `cv2` is unavailable.
 - **Extractors**: `core/perception/extractors/` pulls structured stats, goals, and energy values used by flows.
@@ -182,6 +183,7 @@ This design allows the core loop to evolve independently of perception implement
 
 ## Data & Persistence
 - **Datasets (`datasets/in_game/`)** provide JSON for skills, races, and events consumed by backend APIs and lobby planning; trainee entries now retain seasonal suffixes (e.g., `(Summer)`) while normalizing legacy `(Original)` noise, and each row carries a stable `id` (`{name}_{attribute}_{rarity}`) for downstream joins.
+- **Skill matcher overrides (`datasets/in_game/skill_matching_overrides.json`)** extend the base skills dataset with per-target `require_tokens`/`forbid_tokens` so OCR errors don’t swap style-specific skills (e.g., Pace vs Late Surger) or confuse positive vs. debuff variants when `SkillsFlow` drives purchases.
 - **Event Scraper System**:
   - Main scraper: `datasets/scrape_events.py` handles Gametora data parsing (HTML/JSON modes)
   - Shared events: `datasets/in_game/shared_events.json` stores common trainee events

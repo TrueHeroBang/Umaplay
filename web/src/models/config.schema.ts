@@ -26,6 +26,8 @@ const scenarioPresetDefaults: Record<ScenarioKey, { weakTurnSv: number; racePrec
 
 export const STAT_KEYS: StatKey[] = ['SPD', 'STA', 'PWR', 'GUTS', 'WIT']
 
+const UNITY_CUP_DEFAULT_BURST_ALLOWED_STATS: StatKey[] = ['SPD', 'STA', 'PWR', 'WIT']
+
 const unityCupOpponentValue = z.number().int().min(1).max(3)
 
 const unityCupMultiplierSchema = z.object({
@@ -35,7 +37,11 @@ const unityCupMultiplierSchema = z.object({
 })
 
 export const unityCupAdvancedSchema = z.object({
-  burstAllowedStats: z.array(z.enum(STAT_KEYS)).min(0).max(STAT_KEYS.length).default([...STAT_KEYS]),
+  burstAllowedStats: z
+    .array(z.enum(STAT_KEYS))
+    .min(0)
+    .max(STAT_KEYS.length)
+    .default([...UNITY_CUP_DEFAULT_BURST_ALLOWED_STATS]),
   scores: z
     .object({
       rainbowCombo: z.number().min(0).max(10).default(0.5),
@@ -80,7 +86,7 @@ export const unityCupAdvancedSchema = z.object({
 })
 
 const UNITY_CUP_ADVANCED_DEFAULTS = {
-  burstAllowedStats: [...STAT_KEYS],
+  burstAllowedStats: [...UNITY_CUP_DEFAULT_BURST_ALLOWED_STATS],
   scores: {
     rainbowCombo: 0.5,
     whiteSpiritFill: 0.4,

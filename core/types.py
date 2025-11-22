@@ -31,6 +31,7 @@ class DetectionDict(TypedDict):
 
 ScreenName = Literal[
     "Raceday",
+    "RaceLobby",
     "Inspiration",
     "Lobby",
     "LobbySummer",
@@ -74,6 +75,8 @@ class ScreenInfo(TypedDict, total=False):
     has_claw: bool
     counts: Dict[str, int]
     has_button_white: bool
+    button_change: bool
+    race_badge: bool
 
 
 # ---------- Training scan structures ----------

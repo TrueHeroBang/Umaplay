@@ -93,7 +93,7 @@ class SkillsFlow:
         skill_list: Sequence[str],
         *,
         max_scrolls: int = 15,
-        ocr_threshold: float = 0.75,  # experimental
+        ocr_threshold: float = 0.85,  # experimental, upgraded to 0.82 for the sake of avoiding false positives
         scroll_time_range: Tuple[int, int] = (6, 7),
         early_stop: bool = True,
         date_key: Optional[str] = None,
@@ -114,12 +114,21 @@ class SkillsFlow:
 
         # Desired counts per target: "◎" requires at least 2 buys, otherwise 1.
         desired_counts: Dict[str, int] = {}
+        purchases_made: Dict[str, int] = {}
         for t in skill_list:
-            if "◎" in t:
-                desired_counts[t] = 2
-            else:
-                desired_counts[t] = 1
-        purchases_made: Dict[str, int] = {t: 0 for t in skill_list}
+            desired_counts[t] = 2 if "◎" in t else 1
+            # Seed current-session counts from persisted memory so we don't rebuy when
+            # reopening the skills screen mid-run (e.g., double-circle skills).
+            if self._skill_memory:
+                canonical = self._canonical_skill_name(t)
+                grade_symbol = self._grade_from_name(t)
+                if canonical:
+                    bought = self._skill_memory.get_bought_count(
+                        canonical, grade=grade_symbol
+                    )
+                    purchases_made[t] = min(bought, desired_counts[t])
+                    continue
+            purchases_made[t] = 0
 
         patience = 3
         for i in range(max_scrolls):
@@ -427,6 +436,8 @@ class SkillsFlow:
                 if ok:
                     matches.append((target, score, reason))
 
+            diagnostics.sort(key=lambda x: x[2], reverse=True)
+
             contains_any = bool(matches)
             # Weighted best match: prioritize certain key terms
             KEY_UPWEIGHT = ("groundwork", "left-handed", "corner connoisseur")
@@ -454,7 +465,7 @@ class SkillsFlow:
                             "score": round(s, 3),
                             "reason": r,
                         }
-                        for t, ok, s, r in diagnostics[:4]
+                        for t, ok, s, r in diagnostics[:3]
                     ],
                 )
 
@@ -472,15 +483,22 @@ class SkillsFlow:
 
             # Respect purchase quotas before clicking
             if best_name is not None and (contains_any or best_score >= ocr_threshold):
-                if purchases_made.get(best_name, 0) >= desired_counts.get(best_name, 1):
+                desired = desired_counts.get(best_name, 1)
+                click_counts = desired
+                if purchases_made.get(best_name, 0) >= desired:
                     continue
-                if canonical_name and self._already_bought(canonical_name, grade_symbol):
-                    logger_uma.info(
-                        "[skills] skipping '%s' grade='%s' (already purchased)",
-                        best_name,
-                        grade_symbol or SkillMemoryManager.ANY_GRADE,
+                if canonical_name and self._skill_memory:
+                    bought_count = self._skill_memory.get_bought_count(
+                        canonical_name, grade=grade_symbol
                     )
-                    continue
+                    click_counts = abs(desired - bought_count)
+                    if bought_count >= desired:
+                        logger_uma.info(
+                            "[skills] skipping '%s' grade='%s' (already purchased)",
+                            best_name,
+                            grade_symbol or SkillMemoryManager.ANY_GRADE,
+                        )
+                        continue
                 # Click: center + slight upward offset to counter inertia
                 bx1, by1, bx2, by2 = buy["xyxy"]
                 bh = max(1, by2 - by1)
@@ -491,7 +509,7 @@ class SkillsFlow:
                     upward_offset = 0.15
                 dy = max(2, int(bh * upward_offset))  # ~X% upward
                 shifted = (bx1, by1 - dy, bx2, by2 - dy)
-                self.ctrl.click_xyxy_center(shifted, clicks=1, jitter=0)
+                self.ctrl.click_xyxy_center(shifted, clicks=click_counts, jitter=0)
                 purchases_made[best_name] = purchases_made.get(best_name, 0) + 1
                 if canonical_name and self._skill_memory:
                     self._skill_memory.record_bought(
@@ -499,6 +517,7 @@ class SkillsFlow:
                         grade=grade_symbol,
                         date_key=date_key,
                         commit=True,
+                        boughts=click_counts
                     )
                 logger_uma.info(
                     "Clicked BUY for '%s' (score=%.2f reason=%s) [%d/%d]",
@@ -683,7 +702,7 @@ class SkillsFlow:
                 -int(h * 0.25),
                 steps=2,
                 duration_range=(0.22, 0.40),
-                end_hold_range=(0.15, 0.30),
+                end_hold_range=(0.2, 0.40),
             )
             # Inertia wait
             time.sleep(0.15)
@@ -700,9 +719,12 @@ class SkillsFlow:
                 fraction_android=0.18,
                 settle_pre_s=0.02,
                 settle_mid_s=0.05,
-                settle_post_s=0.15,
+                settle_post_s=0.25,
                 anchor_xy=anchor_xy,
+                end_hold_range_android=(0.40, 0.6),
             )
+            # Inertia wait
+            time.sleep(0.15)
         elif isinstance(self.ctrl, BlueStacksController):
             xywh = self.ctrl._client_bbox_screen_xywh()
             if not xywh:

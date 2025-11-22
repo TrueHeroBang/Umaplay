@@ -324,6 +324,15 @@ class AgentUnityCup(AgentScenario):
                     self.begin_showdown(img, dets)
                 continue
 
+            if screen == "RaceLobby":
+                self.patience = 0
+                self.claw_turn = 0
+                logger_uma.info("[UnityCup] RaceLobby detected; resuming race flow.")
+                if not self.race.lobby():
+                    logger_uma.warning(
+                        "[UnityCup] RaceLobby resume failed; continuing main loop.")
+                continue
+
             if screen == "Raceday":
                 
                 self.patience = 0
