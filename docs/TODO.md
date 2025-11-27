@@ -8,10 +8,14 @@ This organizes the mixed notes into a clear, actionable backlog. Items are group
 
 ### 0.4.1
 
+
+
+### 0.4.2
+
+
 Bug:
 - @Rosetta: it is confusing hanshin juvenively for Asahi hai, if asahi hai is first. Japanese oaks and yushun... Maybe do a full read and go back
 - it is not respecting the blue explosions restrictions.?
-- Weird error check thread, air grove, and infirmary, Rocostre thread: https://discord.com/channels/1100600632659943487/1438783548390641789
 
 ADB:
 - Bluestack bugfixes and validation @Pure Fox and others
@@ -32,7 +36,6 @@ Discord:
 - give points to Dorasu and antonio and others for activity on discord. Gamification give points to who gave me the discord template for git: "I think you may need template for issue report"
 
 
-### 0.4.2
 
 - On new races, is confusing the camera button with the skip button. include the new images at datasets\uma_unity_cup\raw\set_2025-11-19 already labeled, to the ura model (normal no unity) with the inspiration class. Retrained
 
@@ -168,6 +171,7 @@ we have 'silent' yolo detection errors. for example with support_bar, it has 0.3
 add a check like 'if support type, then you must have support bar, otherwise try again with less confidence
 
 
+- Weird error check thread, air grove, and infirmary, Rocostre thread: https://discord.com/channels/1100600632659943487/1438783548390641789
 ### 0.4.3
 optimize CNN predicts with ONNX runtime for CPU automatically
 

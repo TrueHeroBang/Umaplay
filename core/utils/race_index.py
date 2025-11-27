@@ -179,6 +179,8 @@ class RaceIndex:
     _name_to_entries: Dict[str, List[Dict]] = {}
     _banner_templates: Dict[str, Dict[str, object]] = {}
     _templates_loaded: bool = False
+    _ambiguity_groups: Dict[str, List[str]] = {}
+    _ambiguity_loaded: bool = False
 
     @staticmethod
     def canonicalize(name: object) -> str:
@@ -226,6 +228,7 @@ class RaceIndex:
                     continue
 
         cls._load_banner_templates()
+        cls._load_ambiguity_groups()
         cls._loaded = True
         logger_uma.debug(
             "[RaceIndex] Loaded races: %d dates, %d names",
@@ -309,13 +312,47 @@ class RaceIndex:
     def _load_banner_templates(cls) -> None:
         if cls._templates_loaded:
             return
+        mapping: Dict[str, str] = {}
 
-        idx_path = Settings.ROOT_DIR / "assets" / "races" / "templates" / "index.json"
+        # Preferred location: datasets/in_game, next to RACE_DATA_PATH
         try:
-            with open(idx_path, "r", encoding="utf-8") as f:
+            base_path: Path = Settings.RACE_DATA_PATH
+            cfg_path = base_path.with_name("race_banner_templates.json")
+            with open(cfg_path, "r", encoding="utf-8") as f:
                 mapping = json.load(f) or {}
+            logger_uma.info(
+                "[RaceIndex] Loaded banner template index from %s (%d entries)",
+                cfg_path,
+                len(mapping),
+            )
+        except FileNotFoundError:
+            # Backwards-compatible fallback: legacy assets path
+            idx_path = (
+                Settings.ROOT_DIR
+                / "assets"
+                / "races"
+                / "templates"
+                / "index.json"
+            )
+            try:
+                with open(idx_path, "r", encoding="utf-8") as f:
+                    mapping = json.load(f) or {}
+                logger_uma.warning(
+                    "[RaceIndex] Using legacy banner template index at %s (%d entries)",
+                    idx_path,
+                    len(mapping),
+                )
+            except Exception as e:
+                logger_uma.warning(
+                    "[RaceIndex] Could not load banner template index: %s",
+                    e,
+                )
+                mapping = {}
         except Exception as e:
-            logger_uma.warning("[RaceIndex] Could not load banner template index: %s", e)
+            logger_uma.warning(
+                "[RaceIndex] Could not load banner template index: %s",
+                e,
+            )
             mapping = {}
 
         for race_name, rel_path in mapping.items():
@@ -363,6 +400,77 @@ class RaceIndex:
         cls._templates_loaded = True
 
     @classmethod
+    def _load_ambiguity_groups(cls) -> None:
+        if cls._ambiguity_loaded:
+            return
+
+        try:
+            base_path: Path = Settings.RACE_DATA_PATH
+        except Exception as e:  # pragma: no cover - defensive
+            logger_uma.warning(
+                "[RaceIndex] Could not resolve race data path for ambiguity groups: %s",
+                e,
+            )
+            cls._ambiguity_groups = {}
+            cls._ambiguity_loaded = True
+            return
+
+        cfg_path = base_path.with_name("race_banner_ambiguity.json")
+        try:
+            with open(cfg_path, "r", encoding="utf-8") as f:
+                raw = json.load(f) or {}
+        except FileNotFoundError:
+            logger_uma.debug(
+                "[RaceIndex] No race banner ambiguity config found at %s",
+                cfg_path,
+            )
+            cls._ambiguity_groups = {}
+            cls._ambiguity_loaded = True
+            return
+        except Exception as e:
+            logger_uma.warning(
+                "[RaceIndex] Could not load race banner ambiguity config: %s",
+                e,
+            )
+            raw = {}
+
+        groups: Dict[str, List[str]] = {}
+
+        for key, names in (raw or {}).items():
+            if not names or not isinstance(names, list):
+                continue
+            base_canon = canonicalize_race_name(key)
+            if not base_canon:
+                continue
+            members: List[str] = []
+            for nm in names:
+                cn = canonicalize_race_name(nm)
+                if cn and cn not in members:
+                    members.append(cn)
+            if not members:
+                continue
+            if base_canon not in members:
+                members.insert(0, base_canon)
+            group = members
+            for cn in group:
+                groups[cn] = group
+
+        cls._ambiguity_groups = groups
+        cls._ambiguity_loaded = True
+
+        if groups:
+            logger_uma.info(
+                "[RaceIndex] Loaded race banner ambiguity groups for %d canonical names from %s",
+                len(groups),
+                cfg_path,
+            )
+        else:
+            logger_uma.debug(
+                "[RaceIndex] Race banner ambiguity config was empty at %s",
+                cfg_path,
+            )
+
+    @classmethod
     def banner_template(cls, race_name: str) -> Optional[Dict[str, object]]:
         """Return banner template metadata (path, hash) for the given race name if known."""
         cls._ensure_loaded()
@@ -373,3 +481,41 @@ class RaceIndex:
     def all_banner_templates(cls) -> Dict[str, Dict[str, object]]:
         cls._ensure_loaded()
         return dict(cls._banner_templates)
+
+    @classmethod
+    def ambiguity_group(cls, race_name: str) -> List[str]:
+        """Return the canonical ambiguity group for this race.
+
+        Always returns at least the canonical name itself when a valid name is
+        provided, even if no explicit group is configured.
+        """
+
+        cls._ensure_loaded()
+        canon = canonicalize_race_name(race_name)
+        if not canon:
+            return []
+        group = cls._ambiguity_groups.get(canon)
+        if group:
+            return list(group)
+        return [canon]
+
+    @classmethod
+    def banner_templates_for_group(cls, race_name: str) -> List[Dict[str, object]]:
+        """Return banner templates for the ambiguity group of this race.
+
+        Falls back to the single template for this race when no group is
+        configured. Missing templates are simply skipped.
+        """
+
+        cls._ensure_loaded()
+        canons = cls.ambiguity_group(race_name)
+        out: List[Dict[str, object]] = []
+        seen = set()
+        for canon in canons:
+            if canon in seen:
+                continue
+            seen.add(canon)
+            tmpl = cls._banner_templates.get(canon)
+            if tmpl:
+                out.append(tmpl)
+        return out
