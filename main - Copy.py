@@ -5,6 +5,7 @@ import threading
 import time
 import argparse
 import webbrowser
+import keyboard
 import uvicorn
 import subprocess
 import sys
@@ -20,7 +21,6 @@ from core.settings import Settings
 from core.agent_nav import AgentNav
 
 from server.main import app
-from server.bot_runtime import RUNTIME
 from server.utils import (
     load_config,
     ensure_config_exists,
@@ -854,30 +854,22 @@ if __name__ == "__main__":
     except Exception as exc:
         logger_uma.warning("[INIT] Failed to start Tk loop: %s", exc)
 
-    # Launch server and control bot via Web API (NO HOTKEYS)
+    # Launch hotkey listener and server
     state = BotState()
-
-    # Bridge Web API runtime to BotState
-    def _run_bot_via_api(stop_event: threading.Event):
-        state.start()
-        try:
-            while not stop_event.is_set():
-                if not state.running:
-                    break
-                time.sleep(0.2)
-        finally:
-            state.stop()
-
-    # Inject runtime hook
-    RUNTIME._run_bot = _run_bot_via_api  # type: ignore
+    nav_state = NavState()
+    logger_uma.debug("[INIT] Spawning server thread…")
+    srv_thread = threading.Thread(target=boot_server, daemon=True)
+    srv_thread.start()
 
     try:
-        boot_server()  # blocks
+        hotkey_loop(state, nav_state)
     except KeyboardInterrupt:
         pass
     finally:
-        logger_uma.debug("[SHUTDOWN] Stopping bot…")
+        logger_uma.debug("[SHUTDOWN] Stopping bot and joining threads…")
         state.stop()
         if state.thread:
             state.thread.join(timeout=2.0)
+        if nav_state.thread:
+            nav_state.thread.join(timeout=2.0)
         logger_uma.info("[SHUTDOWN] Bye.")

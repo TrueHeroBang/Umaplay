@@ -1,6 +1,6 @@
 from pathlib import Path
 from fastapi import FastAPI
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import HTTPException, Request
 from fastapi.staticfiles import StaticFiles
@@ -18,7 +18,6 @@ from server.utils import (
     load_event_setup_defaults,
 )
 from server.updater import latest_info
-from server.bot_runtime import RUNTIME
 from core.version import __version__
 
 ensure_nav_exists()
@@ -225,157 +224,70 @@ def put_preset_event_setup(preset_id: str, payload: Dict[str, Any]):
     raise HTTPException(status_code=404, detail="Preset not found")
 
 
-
-# -----------------------------
-# Bot Runtime API
-# -----------------------------
-@app.get("/api/bot/status")
-def api_bot_status():
-    s = RUNTIME.status()
-    return {"running": s.running, "state": s.state, "detail": s.detail}
-
-
-@app.post("/api/bot/start")
-def api_bot_start():
-    s = RUNTIME.start()
-    return {"running": s.running, "state": s.state, "detail": s.detail}
-
-
-@app.post("/api/bot/stop")
-def api_bot_stop():
-    s = RUNTIME.stop()
-    return {"running": s.running, "state": s.state, "detail": s.detail}
-
-
 @app.get("/")
 async def root_index():
-    """
-    Serve the built web UI, but inject a small floating Bot Control widget
-    so you can Start/Stop the bot without rebuilding the frontend.
-    """
-    index_path = os.path.join(PATH, "index.html")
-    try:
-        html = Path(index_path).read_text(encoding="utf-8")
-    except Exception:
-        return FileResponse(
-            index_path,
-            headers={
-                "Cache-Control": "no-cache, no-store, must-revalidate",
-                "Pragma": "no-cache",
-                "Expires": "0",
-            },
-        )
-
-    inject = """
-<!-- Umaplay Bot Controls (injected by server) -->
-<div id="umaplay-bot-controls" style="
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 99999;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: rgba(18,18,18,0.92);
-    color: #fff;
-    padding: 10px 12px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    width: 240px;
-">
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-    <div style="font-weight:700;">Bot Controls</div>
-    <button id="umaplay-bot-close" title="Hide" style="
-        background: transparent; border: 0; color: #bbb; cursor:pointer; font-size: 16px;
-    ">✕</button>
-  </div>
-  <div id="umaplay-bot-status" style="font-size: 12px; color:#cfcfcf; margin-bottom:10px;">
-    Status: loading...
-  </div>
-  <div style="display:flex; gap:8px;">
-    <button id="umaplay-bot-start" style="
-        flex:1; padding:8px 10px; border-radius:10px; border:0; cursor:pointer;
-        background:#2d6cdf; color:#fff; font-weight:600;
-    ">Start</button>
-    <button id="umaplay-bot-stop" style="
-        flex:1; padding:8px 10px; border-radius:10px; border:0; cursor:pointer;
-        background:#d13a3a; color:#fff; font-weight:600;
-    ">Stop</button>
-  </div>
-</div>
-
-<script>
-(() => {
-  const box = document.getElementById('umaplay-bot-controls');
-  const closeBtn = document.getElementById('umaplay-bot-close');
-  const statusEl = document.getElementById('umaplay-bot-status');
-  const startBtn = document.getElementById('umaplay-bot-start');
-  const stopBtn = document.getElementById('umaplay-bot-stop');
-
-  const setStatus = (s) => {
-    if (!s) { statusEl.textContent = 'Status: unknown'; return; }
-    statusEl.textContent = `Status: ${s.state} (${s.running ? 'running' : 'stopped'})${s.detail ? ' - ' + s.detail : ''}`;
-  };
-
-  const api = async (path, method='GET') => {
-    const res = await fetch(path, { method });
-    if (!res.ok) throw new Error(`${method} ${path} -> ${res.status}`);
-    return await res.json();
-  };
-
-  const refresh = async () => {
-    try {
-      const s = await api('/api/bot/status');
-      setStatus(s);
-      startBtn.disabled = !!s.running;
-      stopBtn.disabled = !s.running;
-      startBtn.style.opacity = startBtn.disabled ? '0.6' : '1';
-      stopBtn.style.opacity = stopBtn.disabled ? '0.6' : '1';
-    } catch (e) {
-      statusEl.textContent = 'Status: API not reachable (check server logs)';
-      startBtn.disabled = false;
-      stopBtn.disabled = false;
-      startBtn.style.opacity = '1';
-      stopBtn.style.opacity = '1';
-    }
-  };
-
-  startBtn.addEventListener('click', async () => {
-    startBtn.disabled = true;
-    try { setStatus(await api('/api/bot/start', 'POST')); }
-    catch (e) { statusEl.textContent = 'Start failed (check logs)'; }
-    finally { setTimeout(refresh, 400); }
-  });
-
-  stopBtn.addEventListener('click', async () => {
-    stopBtn.disabled = true;
-    try { setStatus(await api('/api/bot/stop', 'POST')); }
-    catch (e) { statusEl.textContent = 'Stop failed (check logs)'; }
-    finally { setTimeout(refresh, 400); }
-  });
-
-  closeBtn.addEventListener('click', () => {
-    box.style.display = 'none';
-  });
-
-  refresh();
-  setInterval(refresh, 2000);
-})();
-</script>
-<!-- /Umaplay Bot Controls -->
-"""
-
-    if "</body>" in html:
-        html = html.replace("</body>", inject + "\n</body>")
-    else:
-        html = html + inject
-
-    return HTMLResponse(
-        html,
+    return FileResponse(
+        os.path.join(PATH, "index.html"),
         headers={
             "Cache-Control": "no-cache, no-store, must-revalidate",
             "Pragma": "no-cache",
             "Expires": "0",
         },
     )
+
+
+# ----------------------------
+# Admin: Update from GitHub
+# ----------------------------
+@app.post("/admin/update")
+async def update_from_github(request: Request):
+    # Safety: allow only local calls
+    client = request.client.host if request.client else ""
+    if client not in ("127.0.0.1", "localhost", "::1"):
+        raise HTTPException(status_code=403, detail="Local requests only")
+
+    root = repo_root()
+    if not (root / ".git").exists():
+        raise HTTPException(status_code=400, detail="Not a git repository")
+
+    # Ensure clean working tree
+    code, out, err = run_cmd(["git", "status", "--porcelain"], cwd=root)
+    if code != 0:
+        raise HTTPException(status_code=500, detail=f"git status failed: {err or out}")
+    if out.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Working tree is not clean. Commit or stash changes first.",
+        )
+
+    # Ensure we are on main
+    code, out, err = run_cmd(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=root)
+    if code != 0:
+        raise HTTPException(
+            status_code=500, detail=f"git rev-parse failed: {err or out}"
+        )
+    branch = (out or "").strip()
+    if branch != "main":
+        raise HTTPException(
+            status_code=400,
+            detail=f"Updates allowed only on 'main' (current: '{branch}')",
+        )
+
+    # Fetch & fast-forward pull
+    steps = []
+    for args in (["git", "fetch", "--all", "--prune"], ["git", "pull", "--ff-only"]):
+        code, out, err = run_cmd(args, cwd=root, timeout=120)
+        steps.append(
+            {"cmd": " ".join(args), "code": code, "stdout": out, "stderr": err}
+        )
+        if code != 0:
+            raise HTTPException(
+                status_code=500, detail={"message": "Update failed", "steps": steps}
+            )
+
+    return {"status": "ok", "branch": branch, "steps": steps}
+
+
 # ----------------------------
 # Admin: Force update (HARD RESET)
 # ----------------------------

@@ -1,0 +1,303 @@
+{
+  "id": "fa05a1ec-6459-45b9-8d4a-1cf439bb5b5e",
+  "name": "Mejiro Ryan",
+  "group": null,
+  "priorityStats": [
+    "SPD",
+    "STA",
+    "PWR",
+    "WIT",
+    "GUTS"
+  ],
+  "targetStats": {
+    "SPD": 600,
+    "STA": 600,
+    "PWR": 700,
+    "GUTS": 250,
+    "WIT": 300
+  },
+  "minimalMood": "NORMAL",
+  "juniorStyle": "pace",
+  "skillsToBuy": [
+    "Right-Handed ○",
+    "Spring Runner ○",
+    "Outer Post Proficiency ○",
+    "Hanshin Racecourse ○",
+    "Wet Conditions ○",
+    "Rainy Days ○",
+    "Target in Sight ○",
+    "Pace Chaser Savvy ◎",
+    "Inner Post Proficiency ○",
+    "Lucky Seven",
+    "Long Shot ○",
+    "Standard Distance ○",
+    "Corner Recovery ○",
+    "Hydrate",
+    "Stamina to Spare",
+    "Deep Breaths",
+    "Preferred Position",
+    "Playtime's Over!",
+    "Tail Held High",
+    "Pace Chaser Corners ○",
+    "Pace Chaser Straightaways ○",
+    "Long Corners ○",
+    "Corner Adept ○",
+    "Slipstream",
+    "Prepared to Pass",
+    "Ramp Up",
+    "Inside Scoop",
+    "Uma Stan",
+    "Straightaway Adept",
+    "Long Straightaways ○",
+    "Ignited Spirit SPD"
+  ],
+  "skillPtsCheck": 150,
+  "plannedRaces": {
+    "Y1-07-1": "Junior Maiden Race",
+    "Y1-12-2": "Hopeful Stakes",
+    "Y2-11-1": "Queen Elizabeth II Cup",
+    "Y2-11-2": "Japan Cup",
+    "Y3-03-2": "Osaka Hai",
+    "Y3-10-2": "Tenno Sho (Autumn)",
+    "Y3-11-1": "Queen Elizabeth II Cup",
+    "Y3-11-2": "Japan Cup"
+  },
+  "plannedRacesTentative": {
+    "Y1-07-1": true
+  },
+  "raceIfNoGoodValue": true,
+  "prioritizeHint": false,
+  "weakTurnSv": 1,
+  "racePrecheckSv": 2.5,
+  "lobbyPrecheckEnable": false,
+  "juniorMinimalMood": null,
+  "goalRaceForceTurns": 5,
+  "unityCupAdvanced": {
+    "burstAllowedStats": [
+      "SPD",
+      "STA",
+      "PWR",
+      "GUTS",
+      "WIT"
+    ],
+    "scores": {
+      "rainbowCombo": 0.5,
+      "whiteSpiritFill": 0.4,
+      "whiteSpiritExploded": 0.13,
+      "whiteComboPerFill": 0.25,
+      "blueSpiritEach": 0.5,
+      "blueComboPerExtraFill": 0.25
+    },
+    "multipliers": {
+      "juniorClassic": {
+        "white": 1.5,
+        "whiteCombo": 1.5,
+        "blueCombo": 1.5
+      },
+      "senior": {
+        "white": 1,
+        "whiteCombo": 1,
+        "blueCombo": 1
+      }
+    },
+    "opponentSelection": {
+      "race1": 2,
+      "race2": 1,
+      "race3": 1,
+      "race4": 1,
+      "defaultUnknown": 1
+    }
+  },
+  "event_setup": {
+    "supports": [
+      {
+        "slot": 0,
+        "name": "Kitasan Black",
+        "rarity": "SSR",
+        "attribute": "SPD",
+        "priority": {
+          "enabled": true,
+          "scoreBlueGreen": 0.75,
+          "scoreOrangeMax": 0.5,
+          "skillsRequiredForPriority": [
+            "Corner Adept ○",
+            "Corner Recovery ○",
+            "Long Corners ○"
+          ],
+          "recheckAfterHint": true
+        },
+        "rewardPriority": [
+          "skill_pts",
+          "stats",
+          "hints"
+        ],
+        "avoidEnergyOverflow": true
+      },
+      {
+        "slot": 1,
+        "name": "Super Creek",
+        "rarity": "SSR",
+        "attribute": "STA",
+        "priority": {
+          "enabled": true,
+          "scoreBlueGreen": 0.75,
+          "scoreOrangeMax": 0.5,
+          "skillsRequiredForPriority": [
+            "Corner Recovery ○",
+            "Ramp Up",
+            "Deep Breaths"
+          ],
+          "recheckAfterHint": false
+        },
+        "rewardPriority": [
+          "skill_pts",
+          "stats",
+          "hints"
+        ],
+        "avoidEnergyOverflow": true
+      },
+      {
+        "slot": 2,
+        "name": "Yaeno Muteki",
+        "rarity": "SSR",
+        "attribute": "PWR",
+        "priority": {
+          "enabled": true,
+          "scoreBlueGreen": 0.75,
+          "scoreOrangeMax": 0.5,
+          "skillsRequiredForPriority": [
+            "Ramp Up",
+            "Prepared to Pass",
+            "Tail Held High",
+            "Playtime's Over!"
+          ],
+          "recheckAfterHint": false
+        },
+        "rewardPriority": [
+          "skill_pts",
+          "stats",
+          "hints"
+        ],
+        "avoidEnergyOverflow": true
+      },
+      {
+        "slot": 3,
+        "name": "Mejiro McQueen",
+        "rarity": "SSR",
+        "attribute": "STA",
+        "priority": {
+          "enabled": true,
+          "scoreBlueGreen": 0.75,
+          "scoreOrangeMax": 0.5,
+          "skillsRequiredForPriority": [
+            "Corner Adept ○",
+            "Inside Scoop",
+            "Prepared to Pass",
+            "Rainy Days ○",
+            "Straightaway Adept",
+            "Wet Conditions ○"
+          ],
+          "recheckAfterHint": false
+        },
+        "rewardPriority": [
+          "skill_pts",
+          "stats",
+          "hints"
+        ],
+        "avoidEnergyOverflow": true
+      },
+      {
+        "slot": 4,
+        "name": "Special Week",
+        "rarity": "SSR",
+        "attribute": "SPD",
+        "priority": {
+          "enabled": true,
+          "scoreBlueGreen": 0.75,
+          "scoreOrangeMax": 0.5,
+          "skillsRequiredForPriority": [
+            "Hydrate",
+            "Rainy Days ○",
+            "Wet Conditions ○"
+          ],
+          "recheckAfterHint": false
+        },
+        "rewardPriority": [
+          "skill_pts",
+          "stats",
+          "hints"
+        ],
+        "avoidEnergyOverflow": true
+      },
+      {
+        "slot": 5,
+        "name": "Fine Motion",
+        "rarity": "SSR",
+        "attribute": "WIT",
+        "priority": {
+          "enabled": true,
+          "scoreBlueGreen": 0.75,
+          "scoreOrangeMax": 0.5,
+          "skillsRequiredForPriority": [
+            "Right-Handed ○",
+            "Outer Post Proficiency ○",
+            "Nimble Navigator",
+            "Prepared to Pass",
+            "Corner Adept ○"
+          ],
+          "recheckAfterHint": false
+        },
+        "rewardPriority": [
+          "skill_pts",
+          "stats",
+          "hints"
+        ],
+        "avoidEnergyOverflow": true
+      }
+    ],
+    "scenario": {
+      "name": "Ura Finale",
+      "avoidEnergyOverflow": true,
+      "rewardPriority": [
+        "skill_pts",
+        "stats",
+        "hints"
+      ]
+    },
+    "trainee": {
+      "name": "Mejiro Ryan",
+      "avoidEnergyOverflow": true,
+      "rewardPriority": [
+        "skill_pts",
+        "stats",
+        "hints"
+      ]
+    },
+    "prefs": {
+      "overrides": {
+        "trainee/Mejiro Ryan/None/None/Real Gains#s1": 2,
+        "trainee/Mejiro Ryan/None/None/With Relaxation and Trust Comes...#s1": 1,
+        "trainee/Mejiro Ryan/None/None/New Year's Resolutions#s1": 2,
+        "trainee/Mejiro Ryan/None/None/Acupuncture (Just an Acupuncturist, No Worries! ☆)#s1": 4,
+        "support/Kitasan Black/SPD/SSR/Paying It Forward#s2": 2,
+        "support/Yaeno Muteki/PWR/SSR/A Reasonable Diet vs. an Explosive Diet#s2": 2,
+        "support/Super Creek/STA/SSR/Leave it to Me to Be Considerate! ♪#s1": 1,
+        "support/Mejiro McQueen/STA/SSR/To Maintain My Weight#s1": 2,
+        "support/Special Week/SPD/SSR/Just a Little Closer#s2": 2,
+        "support/Special Week/SPD/SSR/So Many Options!#s1": 2,
+        "support/Fine Motion/WIT/SSR/Wonderful New Shoes#s1": 2
+      },
+      "patterns": [],
+      "defaults": {
+        "support": 1,
+        "trainee": 1,
+        "scenario": 1
+      },
+      "rewardPriority": [
+        "skill_pts",
+        "stats",
+        "hints"
+      ]
+    }
+  }
+}

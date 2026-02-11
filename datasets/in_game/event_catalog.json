@@ -27444,6 +27444,1315 @@
     "event_kind": "random"
   },
   {
+    "key": "trainee/Tamamo Cross/None/None/Lightning Heart",
+    "key_step": "trainee/Tamamo Cross/None/None/Lightning Heart#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Lightning Heart",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "guts": 20
+        }
+      ],
+      "2": [
+        {
+          "energy": 15
+        }
+      ]
+    },
+    "title_norm": "lightning heart",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/We're Havin' a Takoyaki Party!",
+    "key_step": "trainee/Tamamo Cross/None/None/We're Havin' a Takoyaki Party!#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "We're Havin' a Takoyaki Party!",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "speed": 10,
+          "power": 10
+        }
+      ],
+      "2": [
+        {
+          "guts": 10,
+          "wit": 10
+        }
+      ]
+    },
+    "title_norm": "we're havin' a takoyaki party!",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Stylin' My Way",
+    "key_step": "trainee/Tamamo Cross/None/None/Stylin' My Way#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Stylin' My Way",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "speed": 20,
+          "status": "Charming ○"
+        }
+      ],
+      "2": [
+        {
+          "power": 10,
+          "guts": 10,
+          "status": "Charming ○"
+        }
+      ]
+    },
+    "title_norm": "stylin' my way",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Real Naniwa Spirit!",
+    "key_step": "trainee/Tamamo Cross/None/None/Real Naniwa Spirit!#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Real Naniwa Spirit!",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "speed": 5,
+          "power": 5
+        }
+      ],
+      "2": [
+        {
+          "stamina": 10
+        }
+      ]
+    },
+    "title_norm": "real naniwa spirit!",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Take a Guess!",
+    "key_step": "trainee/Tamamo Cross/None/None/Take a Guess!#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Take a Guess!",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "power": 10
+        }
+      ],
+      "2": [
+        {
+          "stamina": 10
+        }
+      ]
+    },
+    "title_norm": "take a guess!",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/How to Be an Adult",
+    "key_step": "trainee/Tamamo Cross/None/None/How to Be an Adult#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "How to Be an Adult",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "speed": 5,
+          "power": 10
+        }
+      ],
+      "2": [
+        {
+          "hints": [
+            "Hanshin Racecourse ○ (+1)"
+          ]
+        }
+      ]
+    },
+    "title_norm": "how to be an adult",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/The Lure of Grilled Squid",
+    "key_step": "trainee/Tamamo Cross/None/None/The Lure of Grilled Squid#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "The Lure of Grilled Squid",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "energy": 10,
+          "skill_pts": 5
+        }
+      ],
+      "2": [
+        {
+          "energy": 30,
+          "skill_pts": 10
+        },
+        {
+          "energy": 30,
+          "skill_pts": 10,
+          "speed": -5,
+          "power": 5,
+          "status": "Slow Metabolism"
+        }
+      ]
+    },
+    "title_norm": "the lure of grilled squid",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Leave it to Tama!",
+    "key_step": "trainee/Tamamo Cross/None/None/Leave it to Tama!#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Leave it to Tama!",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "power": 10
+        }
+      ],
+      "2": [
+        {
+          "stamina": 10
+        }
+      ]
+    },
+    "title_norm": "leave it to tama!",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Fun Times at the Farm!",
+    "key_step": "trainee/Tamamo Cross/None/None/Fun Times at the Farm!#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Fun Times at the Farm!",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": 10
+        }
+      ],
+      "2": [
+        {
+          "stamina": 10
+        }
+      ]
+    },
+    "title_norm": "fun times at the farm!",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Be There for Each Other",
+    "key_step": "trainee/Tamamo Cross/None/None/Be There for Each Other#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Be There for Each Other",
+    "chain_step": 1,
+    "default_preference": 3,
+    "options": {
+      "1": [
+        {
+          "guts": 10
+        }
+      ],
+      "2": [
+        {
+          "wit": 10
+        }
+      ],
+      "3": [
+        {
+          "speed": 10
+        }
+      ]
+    },
+    "title_norm": "be there for each other",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Visit from a Vixen",
+    "key_step": "trainee/Tamamo Cross/None/None/Visit from a Vixen#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Visit from a Vixen",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "speed": 10
+        }
+      ],
+      "2": [
+        {
+          "guts": 10
+        }
+      ]
+    },
+    "title_norm": "visit from a vixen",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/A Sticky, Scary Situation",
+    "key_step": "trainee/Tamamo Cross/None/None/A Sticky, Scary Situation#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "A Sticky, Scary Situation",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "wit": 10
+        }
+      ],
+      "2": [
+        {
+          "power": 10
+        }
+      ]
+    },
+    "title_norm": "a sticky, scary situation",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "random"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Failed training (Get Well Soon!)",
+    "key_step": "trainee/Tamamo Cross/None/None/Failed training (Get Well Soon!)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Failed training (Get Well Soon!)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "mood": -1,
+          "status": "Practice Poor"
+        },
+        {
+          "mood": -1
+        }
+      ],
+      "2": [
+        {
+          "mood": -1,
+          "status": "Practice Poor"
+        },
+        {
+          "status": "Practice Perfect ○"
+        }
+      ]
+    },
+    "title_norm": "failed training (get well soon!)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Failed training (Don't Overdo It!)",
+    "key_step": "trainee/Tamamo Cross/None/None/Failed training (Don't Overdo It!)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Failed training (Don't Overdo It!)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": 10,
+          "mood": -2,
+          "status": "Practice Poor"
+        },
+        {
+          "energy": 10,
+          "mood": -2
+        }
+      ],
+      "2": [
+        {
+          "mood": -3,
+          "status": "Practice Poor"
+        },
+        {
+          "energy": 10,
+          "status": "Practice Perfect ○"
+        }
+      ]
+    },
+    "title_norm": "failed training (don't overdo it!)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Extra Training",
+    "key_step": "trainee/Tamamo Cross/None/None/Extra Training#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Extra Training",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "energy": -5,
+          "status": "Heal a negative status effect",
+          "bond": 5,
+          "character": "yayoi"
+        },
+        {
+          "energy": -5,
+          "bond": 5,
+          "character": "yayoi"
+        }
+      ],
+      "2": [
+        {
+          "energy": 5
+        }
+      ]
+    },
+    "title_norm": "extra training",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/At Summer Camp (Year 2)",
+    "key_step": "trainee/Tamamo Cross/None/None/At Summer Camp (Year 2)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "At Summer Camp (Year 2)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "power": 10
+        }
+      ],
+      "2": [
+        {
+          "guts": 10
+        }
+      ]
+    },
+    "title_norm": "at summer camp (year 2)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Dance Lesson",
+    "key_step": "trainee/Tamamo Cross/None/None/Dance Lesson#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Dance Lesson",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "power": 10
+        }
+      ],
+      "2": [
+        {
+          "wit": 10
+        }
+      ]
+    },
+    "title_norm": "dance lesson",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/New Year's Resolutions",
+    "key_step": "trainee/Tamamo Cross/None/None/New Year's Resolutions#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "New Year's Resolutions",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "stamina": 10
+        }
+      ],
+      "2": [
+        {
+          "energy": 20
+        }
+      ],
+      "3": [
+        {
+          "skill_pts": 20
+        }
+      ]
+    },
+    "title_norm": "new year's resolutions",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/New Year's Shrine Visit",
+    "key_step": "trainee/Tamamo Cross/None/None/New Year's Shrine Visit#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "New Year's Shrine Visit",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": 30
+        }
+      ],
+      "2": [
+        {
+          "stats": 5
+        }
+      ],
+      "3": [
+        {
+          "skill_pts": 35
+        }
+      ]
+    },
+    "title_norm": "new year's shrine visit",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Acupuncture (Just an Acupuncturist, No Worries! ☆)",
+    "key_step": "trainee/Tamamo Cross/None/None/Acupuncture (Just an Acupuncturist, No Worries! ☆)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Acupuncture (Just an Acupuncturist, No Worries! ☆)",
+    "chain_step": 1,
+    "default_preference": 5,
+    "options": {
+      "1": [
+        {
+          "random_chance": 30,
+          "stats": 20
+        },
+        {
+          "random_chance": 70,
+          "mood": -2,
+          "stats": -15,
+          "status": "Night Owl"
+        }
+      ],
+      "2": [
+        {
+          "random_chance": 45,
+          "stats": 20,
+          "hints": [
+            "Corner Recovery ○",
+            "Straightaway Recovery"
+          ]
+        },
+        {
+          "random_chance": 55,
+          "energy": -20,
+          "mood": -2
+        }
+      ],
+      "3": [
+        {
+          "random_chance": 70,
+          "energy_max": 12,
+          "energy": 40,
+          "status": "heal"
+        },
+        {
+          "random_chance": 30,
+          "mood": -2,
+          "energy": -20,
+          "status": "Practice Poor"
+        }
+      ],
+      "4": [
+        {
+          "random_chance": 85,
+          "mood": 1,
+          "energy": 20,
+          "status": "Charming"
+        },
+        {
+          "random_chance": 15,
+          "mood": -1,
+          "energy": -20,
+          "status": "Practice Poor"
+        }
+      ],
+      "5": [
+        {
+          "energy": 10
+        }
+      ]
+    },
+    "title_norm": "acupuncture (just an acupuncturist, no worries! *)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Victory! (G1)",
+    "key_step": "trainee/Tamamo Cross/None/None/Victory! (G1)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Victory! (G1)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -15,
+          "stats": 10,
+          "skill_pts": 45,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -5,
+          "stats": 10,
+          "skill_pts": 45,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -20,
+          "stats": 10,
+          "skill_pts": 45,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "victory! (g1)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Victory! (G2/G3)",
+    "key_step": "trainee/Tamamo Cross/None/None/Victory! (G2/G3)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Victory! (G2/G3)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -15,
+          "stats": 8,
+          "skill_pts": 35,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -5,
+          "stats": 8,
+          "skill_pts": 35,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -20,
+          "stats": 8,
+          "skill_pts": 35,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "victory! (g2/g3)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Victory! (Pre/OP)",
+    "key_step": "trainee/Tamamo Cross/None/None/Victory! (Pre/OP)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Victory! (Pre/OP)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -15,
+          "stats": 5,
+          "skill_pts": 30,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -5,
+          "stats": 5,
+          "skill_pts": 30,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -20,
+          "stats": 5,
+          "skill_pts": 30,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "victory! (pre/op)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Solid Showing (G1)",
+    "key_step": "trainee/Tamamo Cross/None/None/Solid Showing (G1)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Solid Showing (G1)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -20,
+          "stats": 8,
+          "skill_pts": 45,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -10,
+          "stats": 8,
+          "skill_pts": 45,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -30,
+          "stats": 8,
+          "skill_pts": 45,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "solid showing (g1)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Solid Showing (G2/G3)",
+    "key_step": "trainee/Tamamo Cross/None/None/Solid Showing (G2/G3)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Solid Showing (G2/G3)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -20,
+          "stats": 5,
+          "skill_pts": 35,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -10,
+          "stats": 5,
+          "skill_pts": 35,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -30,
+          "stats": 5,
+          "skill_pts": 35,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "solid showing (g2/g3)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Solid Showing (Pre/OP)",
+    "key_step": "trainee/Tamamo Cross/None/None/Solid Showing (Pre/OP)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Solid Showing (Pre/OP)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -20,
+          "stats": 3,
+          "skill_pts": 30,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -10,
+          "stats": 3,
+          "skill_pts": 30,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -30,
+          "stats": 3,
+          "skill_pts": 30,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "solid showing (pre/op)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Defeat (G1)",
+    "key_step": "trainee/Tamamo Cross/None/None/Defeat (G1)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Defeat (G1)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -25,
+          "stats": 4,
+          "skill_pts": 25,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -15,
+          "stats": 4,
+          "skill_pts": 25,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -35,
+          "stats": 4,
+          "skill_pts": 25,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "defeat (g1)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Defeat (G2/G3)",
+    "key_step": "trainee/Tamamo Cross/None/None/Defeat (G2/G3)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Defeat (G2/G3)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -25,
+          "stats": 3,
+          "skill_pts": 20,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -15,
+          "stats": 3,
+          "skill_pts": 20,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -35,
+          "stats": 3,
+          "skill_pts": 20,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "defeat (g2/g3)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Defeat (Pre/OP)",
+    "key_step": "trainee/Tamamo Cross/None/None/Defeat (Pre/OP)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Defeat (Pre/OP)",
+    "chain_step": 1,
+    "default_preference": 1,
+    "options": {
+      "1": [
+        {
+          "energy": -25,
+          "skill_pts": 10,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "energy": -15,
+          "skill_pts": 10,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        },
+        {
+          "energy": -35,
+          "skill_pts": 10,
+          "hints": [
+            "Hint for a skill related to the race"
+          ]
+        }
+      ]
+    },
+    "title_norm": "defeat (pre/op)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Etsuko's Exhaustive Coverage (G1)",
+    "key_step": "trainee/Tamamo Cross/None/None/Etsuko's Exhaustive Coverage (G1)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Etsuko's Exhaustive Coverage (G1)",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "energy": -25,
+          "mood": -1,
+          "stats": 4,
+          "skill_pts": 25,
+          "bond": -10,
+          "character": "etsuko"
+        },
+        {
+          "energy": -15,
+          "mood": 1,
+          "stats": 4,
+          "skill_pts": 25,
+          "bond": 15,
+          "character": "etsuko"
+        }
+      ],
+      "2": [
+        {
+          "energy": -20,
+          "stats": 4,
+          "skill_pts": 25,
+          "bond": 10,
+          "character": "etsuko"
+        }
+      ]
+    },
+    "title_norm": "etsuko's exhaustive coverage (g1)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Etsuko's Exhaustive Coverage (G2/G3)",
+    "key_step": "trainee/Tamamo Cross/None/None/Etsuko's Exhaustive Coverage (G2/G3)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Etsuko's Exhaustive Coverage (G2/G3)",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "energy": -25,
+          "mood": -1,
+          "stats": 3,
+          "skill_pts": 20,
+          "bond": -10,
+          "character": "etsuko"
+        },
+        {
+          "energy": -15,
+          "mood": 1,
+          "stats": 3,
+          "skill_pts": 20,
+          "bond": 15,
+          "character": "etsuko"
+        }
+      ],
+      "2": [
+        {
+          "energy": -20,
+          "stats": 3,
+          "skill_pts": 20,
+          "bond": 10,
+          "character": "etsuko"
+        }
+      ]
+    },
+    "title_norm": "etsuko's exhaustive coverage (g2/g3)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
+    "key": "trainee/Tamamo Cross/None/None/Etsuko's Exhaustive Coverage (Pre/OP)",
+    "key_step": "trainee/Tamamo Cross/None/None/Etsuko's Exhaustive Coverage (Pre/OP)#s1",
+    "type": "trainee",
+    "name": "Tamamo Cross",
+    "rarity": "None",
+    "attribute": "None",
+    "event_name": "Etsuko's Exhaustive Coverage (Pre/OP)",
+    "chain_step": 1,
+    "default_preference": 2,
+    "options": {
+      "1": [
+        {
+          "energy": -25,
+          "mood": -1,
+          "skill_pts": 10,
+          "bond": -10,
+          "character": "etsuko"
+        },
+        {
+          "energy": -15,
+          "mood": 1,
+          "skill_pts": 10,
+          "bond": 15,
+          "character": "etsuko"
+        }
+      ],
+      "2": [
+        {
+          "energy": -20,
+          "skill_pts": 10,
+          "bond": 10,
+          "character": "etsuko"
+        }
+      ]
+    },
+    "title_norm": "etsuko's exhaustive coverage (pre/op)",
+    "image_path": "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+    "phash64": 16953607505669353463,
+    "image_variants": [
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross.png",
+      "web\\public\\events\\trainee_icon_event\\Tamamo Cross\\Tamamo Cross_1.png"
+    ],
+    "event_kind": "special"
+  },
+  {
     "key": "trainee/TM Opera O/None/None/Fit for a King",
     "key_step": "trainee/TM Opera O/None/None/Fit for a King#s1",
     "type": "trainee",
